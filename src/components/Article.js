@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import {findDOMNode} from 'react-dom';
+import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ArticleCommentList from './ArticleCommentList';
+import { CSSTransition } from 'react-transition-group';
 
 class Article extends Component {
   static propTypes = {
@@ -10,36 +10,21 @@ class Article extends Component {
       title: PropTypes.string.isRequired,
       text: PropTypes.string,
     }).isRequired,
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // console.log('updaiting', this.props.isOpen, nextProps.isOpen)
-  }
-
-  componentWillMount() {
-    // console.log('mounting')
+    isOpen: PropTypes.bool,
+    toggleAccordeon: PropTypes.func
   }
 
   render() {
-    const { article, isOpen, toggleOpen } = this.props;
+    const { article, isOpen, toggleAccordeon } = this.props;
     return (
-      <div ref={this.setDivRef}>
+      <div>
         <h3>{article.title}</h3>
-        <button onClick={toggleOpen}>
+        <button onClick={toggleAccordeon}>
           {isOpen ? 'close': 'open'}
         </button>
         {this.getBody()}
       </div>
     );
-  }
-
-  setDivRef = (ref) => {
-    this.container = ref;
-    // console.log(this.container);
-  };
-
-  componentDidMount() {
-    // console.log('mounted')
   }
 
   getBody() {
@@ -48,15 +33,10 @@ class Article extends Component {
     return (
       <section>
         {article.text}
-        <ArticleCommentList comments={article.comments} ref={this.setCommentRef} />
+        <ArticleCommentList comments={article.comments} />
       </section>
     )
   }
-
-  setCommentRef = (ref) => {
-    console.log(findDOMNode(ref));
-  }
-
 }
 
 export default Article;
