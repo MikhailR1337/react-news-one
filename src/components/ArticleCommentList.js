@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ArticleComment from './ArticleComment';
 import toggleOpen from '../decorators/toggleOpen';
-import CommentForm from './CommentForm'
+import CommentForm from './CommentForm/CommentForm'
 
 function ArticleCommentList({ comments = [], isOpen, toggleOpen }) {
     const text = isOpen ? 'hide comment': 'show comment';
