@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ArticleList from './ArticleList';
 import UserForm from './UserForm';
 import Select from 'react-select';
+import DayPickerRanged from './DayPickerRanged';
 
 class App extends Component {
     render() {
@@ -12,6 +13,7 @@ class App extends Component {
         }))
         return(
             <div>
+                <DayPickerRanged />
                 <UserForm />
                 <Select options={options} isMulti />
                 <ArticleList articles={articles} />

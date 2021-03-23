@@ -1,0 +1,21 @@
+.validator-on {
+    border: 2px solid red;
+}
+
+.validator-off {
+    border: 1px solid black;
+}
+
+.comment-area-on {
+    resize: none;
+    width: 20rem;
+    height: 3rem;
+    border: 2px solid red;
+}
+
+.comment-area-off {
+    resize: none;
+    width: 20rem;
+    height: 3rem;
+    border: 1px solid black;
+}
