@@ -1,7 +1,8 @@
 import React, { Component, PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { deleteArticle } from '../AC';
 import PropTypes from 'prop-types';
 import ArticleCommentList from './ArticleCommentList';
-import { CSSTransition } from 'react-transition-group';
 
 class Article extends Component {
   static propTypes = {
@@ -22,6 +23,7 @@ class Article extends Component {
         <button onClick={toggleAccordeon}>
           {isOpen ? 'close': 'open'}
         </button>
+        <button onClick={this.handleDelete}>Delete me</button>
         {this.getBody()}
       </div>
     );
@@ -37,6 +39,12 @@ class Article extends Component {
       </section>
     )
   }
+
+  handleDelete = () => {
+    const { deleteArticle, article } = this.props;
+    deleteArticle(article.id);
+    console.log(`${article.id} DELETEEE`)
+  }
 }
 
-export default Article;
+export default connect(null, { deleteArticle })(Article);

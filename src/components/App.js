@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import ArticleList from './ArticleList';
 import UserForm from './UserForm';
-import Select from 'react-select';
-import DayPickerRanged from './DayPickerRanged';
+import Filters from './Filters/Filters'
+import Counter from './Counter';
 
 class App extends Component {
     render() {
-        const { articles } = this.props;
-        const options = articles.map((article) => ({
-            label: article.title,
-            value: article.id,
-        }))
         return(
             <div>
-                <DayPickerRanged />
+                <Counter />
+                <Filters articles={[]}/>
                 <UserForm />
-                <Select options={options} isMulti />
-                <ArticleList articles={articles} />
+                <ArticleList />
             </div>
         )
     }

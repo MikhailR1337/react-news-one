@@ -10,7 +10,7 @@ class CommentForm extends Component {
     render() {
         const { user, text } = this.state;
         return (
-            <form onSumbit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 user: <input className={this.getClass('user')}
                                 type='text'
                                 value={user}

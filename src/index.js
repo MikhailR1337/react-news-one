@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
-import { articles } from './fixtures';
+import Root from './components/Root';
 
 ReactDOM.render(
-  <App articles={articles} />,
+  <Root />,
   document.getElementById('root')
 );
