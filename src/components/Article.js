@@ -15,6 +15,11 @@ class Article extends Component {
     toggleAccordeon: PropTypes.func
   }
 
+  state = {
+    updateIndex: 0,
+    areCommentsOpen: false
+}
+
   render() {
     const { article, isOpen, toggleAccordeon } = this.props;
     return (
@@ -35,7 +40,8 @@ class Article extends Component {
     return (
       <section>
         {article.text}
-        <ArticleCommentList comments={article.comments} />
+        <button onClick={() => this.setState({updateIndex: this.state.updateIndex + 1 })}>update</button>
+        <ArticleCommentList article={article} key={this.state.updateIndex} />
       </section>
     )
   }
