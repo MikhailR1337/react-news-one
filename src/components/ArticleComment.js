@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { commentSelectorFactory } from '../selectors';
 
 function ArticleComment({ comment }) {
     return (
@@ -10,6 +12,8 @@ function ArticleComment({ comment }) {
 }
 
 ArticleComment.propTypes = {
+    id: PropTypes.string.isRequired,
+    // from coonect
     comment: PropTypes.shape({
         id: PropTypes.string.isRequired,
         user: PropTypes.string.isRequired,
@@ -17,4 +21,14 @@ ArticleComment.propTypes = {
     }).isRequired,
 }
 
-export default ArticleComment;
+const mapStateToProps = () => {
+    const commentSelector = commentSelectorFactory();
+
+    return (state, ownProps) => {
+        return {
+            comment: commentSelector(state, ownProps)
+        }
+    }
+}
+
+export default connect(mapStateToProps)(ArticleComment);
